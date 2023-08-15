@@ -1,6 +1,6 @@
-Stephanie Chuang
-Piper Downs
-Jarrett Allen
+Stephanie Chuang,
+Piper Downs,
+Jarrett Allen,
 Roger Chavez
 
 #Block 29 Puppy bowl with REACT!
