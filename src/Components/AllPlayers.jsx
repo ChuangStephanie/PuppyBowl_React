@@ -36,7 +36,7 @@ export default function AllPlayers() {
                 </label>
             </div>
 
-            {playerplayersToDisplay.map((player) => {
+            {playersToDisplay.map((player) => {
                 return <h3 key={player.id}>{player.name}</h3>;
             })}
         </>
