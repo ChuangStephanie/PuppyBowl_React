@@ -19,8 +19,9 @@ export default function AllPlayers() {
     }, []);
 
     const playersToDisplay = searchParam 
-    ? players.filter(player => 
-        player.name.toLowerCase().include(searchParam)) 
+    ? players.filter((player) => 
+        player.name.toLowerCase().include(searchParam)
+        ) 
         : players;
 
     return (
