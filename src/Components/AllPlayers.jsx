@@ -18,11 +18,11 @@ export default function AllPlayers() {
     getAllPlayers();
   }, []);
 
-    const playersToDisplay = searchParam 
-    ? players.filter((player) => 
-        player.name.toLowerCase().include(searchParam)
-        ) 
-        : players;
+  const playersToDisplay = searchParam
+    ? players.filter((player) =>
+        player.name.toLowerCase().includes(searchParam)
+      )
+    : players;
 
   return (
     <>
