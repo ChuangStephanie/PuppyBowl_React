@@ -28,7 +28,7 @@ export default function AllPlayers() {
     : players;
 
     const SeeDetails = () => {
-        const path = './SinglePlayer'
+        const path = './players/:id'
         navigate(path);
     }
 
