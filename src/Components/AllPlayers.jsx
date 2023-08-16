@@ -27,6 +27,11 @@ export default function AllPlayers() {
       )
     : players;
 
+    const SeeDetails = () => {
+        const path = './SinglePlayer'
+        navigate(path);
+    }
+
   return (
     <>
       <div>
@@ -41,7 +46,12 @@ export default function AllPlayers() {
       </div>
 
       {playersToDisplay.map((player) => {
-        return <h3 key={player.id}>{player.name} <button className="seeDetails" onClick={() => (console.log(player))}>See Details</button> </h3>;
+        return (
+        <>
+        <h3 key={player.id}>{player.name}</h3> 
+        <button className="seeDetails" onClick={SeeDetails}>See Details</button>;
+        </>
+        )
       })}
     </>
   );
