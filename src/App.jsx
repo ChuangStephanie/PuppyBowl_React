@@ -19,7 +19,7 @@ function App() {
     <Routes>
       <Route path='/' element={<AllPlayers/>} />
       <Route path='/NewPlayer' element={<NewPlayer/>} />
-      <Route path='/SinglePlayer' element={<SinglePlayer/>} />
+      <Route path='/players/:id' element={<SinglePlayer/>} />
     </Routes>
       {/* <NewPlayer/>
       <AllPlayers/> */}
