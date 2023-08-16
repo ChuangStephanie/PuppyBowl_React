@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { fetchAllPlayers } from "../API";
+import SinglePlayer from "./SinglePlayer.jsx"
+import {useNavigate} from "react-router-dom"
 
 export default function AllPlayers() {
   const [players, setPlayers] = useState([]);
   const [error, setError] = useState(null);
   const [searchParam, setSearchParam] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getAllPlayers() {
@@ -38,7 +41,7 @@ export default function AllPlayers() {
       </div>
 
       {playersToDisplay.map((player) => {
-        return <h3 key={player.id}>{player.name}</h3>;
+        return <h3 key={player.id}>{player.name} <button className="seeDetails" onClick={() => (console.log(player))}>See Details</button> </h3>;
       })}
     </>
   );
