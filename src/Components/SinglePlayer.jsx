@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchAllPlayers } from "../API";
 import {useParams} from "react-router-dom"
-import AllPlayers from "./AllPlayers"
 
 const SinglePlayer = () => {
     const [player, setPlayer] = useState([]);
