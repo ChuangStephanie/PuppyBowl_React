@@ -1,4 +1,3 @@
-import React from "react";
 import { deletePlayerById } from "../API"; // Import appropriate API function
 
 const DeletePlayer = ({ playerId, onDelete }) => {
