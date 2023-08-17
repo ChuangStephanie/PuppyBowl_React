@@ -1,31 +1,25 @@
-
-import {Routes, Route, Link} from "react-router-dom"
-import './App.css'
-import AllPlayers from './Components/AllPlayers'
-import NewPlayer from './Components/NewPlayer'
-import SinglePlayer from './Components/SinglePlayer'
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import AllPlayers from "./Components/AllPlayers";
+import NewPlayer from "./Components/NewPlayer";
+import SinglePlayer from "./Components/SinglePlayer";
+import NavBar from "./Components/NavBar";
 
 function App() {
-
   return (
     <>
-    <div id="navbar">
-      <Link to="/">Home</Link>
-      <Link to="/NewPlayer">Add New Player</Link>
-      {/* <Link to="/SinglePlayer">Single Player</Link> */}
-    </div>
-
-    <div id="body">
-    <Routes>
-      <Route path='/' element={<AllPlayers/>} />
-      <Route path='/NewPlayer' element={<NewPlayer/>} />
-      <Route path='/players/:id' element={<SinglePlayer/>} />
-    </Routes>
-      {/* <NewPlayer/>
+      <div id="body">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<AllPlayers />} />
+          <Route path="/NewPlayer" element={<NewPlayer />} />
+          <Route path="/players/:id" element={<SinglePlayer />} />
+        </Routes>
+        {/* <NewPlayer/>
       <AllPlayers/> */}
-    </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
