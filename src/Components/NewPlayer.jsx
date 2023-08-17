@@ -24,6 +24,7 @@ export default function NewPlayer() {
 
       const result = await APIresponse.json();
       console.log(result);
+      alert("Submission successful!")
     } catch (error) {
       setError(error);
     }
