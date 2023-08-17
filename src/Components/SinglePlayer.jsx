@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { fetchAllPlayers } from "../API";
 import {useParams} from "react-router-dom"
+const cohortName = "2305-FTB-ET-WEB-PT";
+const baseURL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/players`;
 
 const SinglePlayer = () => {
     const [player, setPlayer] = useState([]);

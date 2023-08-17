@@ -8,15 +8,16 @@ import NavBar from "./Components/NavBar";
 function App() {
   return (
     <>
-      <div id="body">
+      <div className="container">
         <NavBar />
-        <Routes>
-          <Route path="/" element={<AllPlayers />} />
-          <Route path="/NewPlayer" element={<NewPlayer />} />
-          <Route path="/players/:id" element={<SinglePlayer />} />
-        </Routes>
-        {/* <NewPlayer/>
-      <AllPlayers/> */}
+        <div id="mainbody">
+          <Routes>
+            <Route path="/" element={<AllPlayers />} />
+            <Route path="/NewPlayer" element={<NewPlayer />} />
+            <Route path="/players/:id" element={<SinglePlayer />} />
+          </Routes>
+          <AllPlayers />
+        </div>
       </div>
     </>
   );
