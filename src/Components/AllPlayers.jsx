@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { fetchAllPlayers } from "../API";
-import SinglePlayer from "./SinglePlayer.jsx"
-import {useNavigate} from "react-router-dom"
+import SinglePlayer from "./SinglePlayer.jsx";
+import DeletePlayer from "./DeletePlayer.jsx"; // Import the DeletePlayer component
+import { useNavigate } from "react-router-dom";
 
 export default function AllPlayers() {
   const [players, setPlayers] = useState([]);
@@ -27,10 +28,14 @@ export default function AllPlayers() {
       )
     : players;
 
-    const SeeDetails = () => {
-        const path = './players/:id'
-        navigate(path);
-    }
+  const handlePlayerDelete = (playerId) => {
+    setPlayers(players.filter((player) => player.id !== playerId));
+  };
+
+  const SeeDetails = () => {
+    const path = "./SinglePlayer";
+    navigate(path);
+  };
 
   return (
     <>
@@ -45,14 +50,15 @@ export default function AllPlayers() {
         </label>
       </div>
 
-      {playersToDisplay.map((player) => {
-        return (
-        <>
-        <h3 key={player.id}>{player.name}</h3> 
-        <button className="seeDetails" onClick={SeeDetails}>See Details</button>;
-        </>
-        )
-      })}
+      {playersToDisplay.map((player) => (
+        <div key={player.id}>
+          <h3>{player.name}</h3>
+          <button className="seeDetails" onClick={SeeDetails}>
+            See Details
+          </button>
+          <DeletePlayer playerId={player.id} onDelete={handlePlayerDelete} />
+        </div>
+      ))}
     </>
   );
 }
