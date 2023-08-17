@@ -1,46 +1,40 @@
 import { useState, useEffect } from "react";
-import { fetchAllPlayers } from "../API";
-import {useParams} from "react-router-dom"
-const cohortName = "2305-FTB-ET-WEB-PT";
-const baseURL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/players`;
+import { useLocation, useParams } from "react-router-dom";
+import { fetchSinglePlayer } from "../API";
 
-const SinglePlayer = () => {
-    const [player, setPlayer] = useState([]);
-    const [error, setError] = useState(null);
-    const {id} = useParams();
-  
-    useEffect(() => {
-      async function getSinglePlayer() {
-        const APIResponse = await fetchAllPlayers();
-        if (APIResponse.success) {
-          setPlayer(APIResponse.data.players);
-        } else {
-          setError(APIResponse.error.message);
-        }
+export default function SinglePlayer() {
+  let { id } = useParams();
+  const [player, setPlayer] = useState([]);
+  const [error, setError] = useState(null);
+  const { pathname } = useLocation();
+  console.log(pathname);
+
+  useEffect(() => {
+    async function getSinglePlayer() {
+      const APIData = await fetchSinglePlayer(id);
+      if (APIData.success) {
+        setPlayer(APIData.data.player);
+      } else {
+        setError(APIData.error.message);
       }
-      getSinglePlayer();
-    }, []);
+    }
+    getSinglePlayer();
+  }, [id]);
 
-    const playerToDisplay = player.id
-
-// const SinglePlayer = () => {
-//     console.log(useParams());
-//     const {id} = useParams();
- 
-  
-    return (
-      <>
-        <div>
-            {playerToDisplay}
-        <h4>{id}</h4>
-        </div>
-  
-      </>
-    )
-    };
-
-
-
-export default SinglePlayer;
-
-//name, breed, status, imageURL
+  return (
+    <>
+      <h2>Player Details</h2>
+      <div>
+        {player && (
+          <div>
+            <h3>{player.name}</h3>
+            <img src={player.imageUrl} alt={player.name} width="200" />
+            <h4>Breed: {player.breed}</h4>
+            <h4>Status: {player.status}</h4>
+          </div>
+        )}
+        {error && <p>{error}</p>}
+      </div>
+    </>
+  );
+}
