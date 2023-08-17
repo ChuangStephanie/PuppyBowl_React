@@ -11,6 +11,16 @@ export async function fetchAllPlayers() {
   }
 }
 
+export async function fetchSinglePlayer(playerId) {
+  try {
+    const response = await fetch(`${baseURL}/${playerId}`)
+    const player = await response.json();
+    return player;
+  } catch(err) {
+    console.error("error");
+  }
+}
+
 export async function deletePlayerById(playerId) {
   try {
     const response = await fetch(`${baseURL}/${playerId}`, {

@@ -1,46 +1,41 @@
 import { useState, useEffect } from "react";
-import { fetchAllPlayers } from "../API";
-import {useParams} from "react-router-dom"
-const cohortName = "2305-FTB-ET-WEB-PT";
-const baseURL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/players`;
+import { useLocation, useParams } from "react-router-dom";
+import { fetchSinglePlayer } from "../API";
 
-const SinglePlayer = () => {
+export default function SinglePlayer() {
     const [player, setPlayer] = useState([]);
     const [error, setError] = useState(null);
-    const {id} = useParams();
+    const { pathname } = useLocation();
+    let {id} = useParams();
+    console.log(pathname);
   
     useEffect(() => {
       async function getSinglePlayer() {
-        const APIResponse = await fetchAllPlayers();
-        if (APIResponse.success) {
-          setPlayer(APIResponse.data.players);
+        const APIData = await fetchSinglePlayer(id);
+        if (APIData.success) {
+          setPlayer(APIData.data.players);
         } else {
-          setError(APIResponse.error.message);
+          setError(APIData.error.message);
         }
       }
       getSinglePlayer();
-    }, []);
+    }, [id]);
 
-    const playerToDisplay = player.id
 
-// const SinglePlayer = () => {
-//     console.log(useParams());
-//     const {id} = useParams();
- 
-  
     return (
       <>
+        <h2>Player Details</h2>
         <div>
-            {playerToDisplay}
-        <h4>{id}</h4>
+          {player && (
+            <div>
+              <h3>{player.name}</h3>
+              <img src={player.imageUrl} alt={player.name} width="200"/>
+              <h4>Breed: {player.breed}</h4>
+              <h4>Status: {player.status}</h4>
+            </div>
+          )}
+          {error && <p>{error}</p>}
         </div>
-  
       </>
     )
-    };
-
-
-
-export default SinglePlayer;
-
-//name, breed, status, imageURL
+  }

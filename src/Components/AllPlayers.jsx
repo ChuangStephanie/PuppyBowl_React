@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { fetchAllPlayers } from "../API";
 import SinglePlayer from "./SinglePlayer.jsx";
 import DeletePlayer from "./DeletePlayer.jsx"; // Import the DeletePlayer component
@@ -32,10 +32,6 @@ export default function AllPlayers() {
     setPlayers(players.filter((player) => player.id !== playerId));
   };
 
-  const SeeDetails = () => {
-    const path = "./SinglePlayer";
-    navigate(path);
-  };
 
   return (
     <>
@@ -51,11 +47,14 @@ export default function AllPlayers() {
       </div>
 
       {playersToDisplay.map((player) => (
-        <div key={player.id}>
+        <div key={player.id} className="card">
           <h3>{player.name}</h3>
-          <button className="seeDetails" onClick={SeeDetails}>
-            See Details
-          </button>
+          <img src={player.imageUrl} alt={player.name} width="200"/>
+          <div className="seedetails">
+            <button className="details" onClick={() => navigate(`/${player.id}`)}>
+              See Details
+            </button>
+          </div>
           <DeletePlayer playerId={player.id} onDelete={handlePlayerDelete} />
         </div>
       ))}
