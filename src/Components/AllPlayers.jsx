@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { fetchAllPlayers } from "../API";
-import SinglePlayer from "./SinglePlayer.jsx";
 import DeletePlayer from "./DeletePlayer.jsx"; // Import the DeletePlayer component
 import { useNavigate } from "react-router-dom";
 
@@ -12,11 +11,11 @@ export default function AllPlayers() {
 
   useEffect(() => {
     async function getAllPlayers() {
-      const APIResponse = await fetchAllPlayers();
-      if (APIResponse.success) {
-        setPlayers(APIResponse.data.players);
+      const APIData = await fetchAllPlayers();
+      if (APIData.success) {
+        setPlayers(APIData.data.players);
       } else {
-        setError(APIResponse.error.message);
+        setError(APIData.error.message);
       }
     }
     getAllPlayers();
