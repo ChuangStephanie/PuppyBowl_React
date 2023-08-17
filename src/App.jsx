@@ -11,7 +11,7 @@ function App() {
     <>
     <div id="navbar">
       <Link to="/">Home</Link>
-      <Link to="/NewPlayer">New Player</Link>
+      <Link to="/NewPlayer">Add New Player</Link>
       {/* <Link to="/SinglePlayer">Single Player</Link> */}
     </div>
 

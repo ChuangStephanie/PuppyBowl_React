@@ -19,8 +19,9 @@
 }
 
 #navbar {
+  display: flex;
   padding: 2em;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 a {
