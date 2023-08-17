@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: red; /* Change to red */
+  background-color: lightblue; /* Change to blue */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -54,6 +54,7 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: white; /* Add white text color */
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -75,5 +76,6 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+    color: black; /* Add black text color */
   }
 }
